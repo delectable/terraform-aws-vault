@@ -8,7 +8,7 @@ resource "aws_launch_configuration" "lc" {
 
   ebs_optimized               = false
   enable_monitoring           = false
-  associate_public_ip_address = false
+  associate_public_ip_address = "${var.alb_internal == "true" ? "false" : "true"}"
 
   security_groups = [
     "${ aws_security_group.vault_sg_in_ec2.id }",
