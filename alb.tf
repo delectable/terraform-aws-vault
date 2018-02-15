@@ -2,7 +2,7 @@ resource "aws_alb" "alb" {
   name            = "vault-alb-${ var.env }"
   internal        = "${ var.alb_internal }"
   security_groups = ["${ aws_security_group.vault_sg_in_alb.id }"]
-  subnets         = "${ var.alb_subnets }"
+  subnets         = ["${ var.alb_subnets }"]
 
   access_logs {
     enabled = true
